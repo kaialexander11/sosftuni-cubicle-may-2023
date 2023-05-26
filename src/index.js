@@ -1,22 +1,17 @@
 //console.log('Hello world');
 const express = require('express');
-const handlebars = require('express-handlebars');
-const path = require('path');
+//const path = require('path');
+
+const expressConfig = require('./config/expressConfig');
+const handlebarsConfig = require('./config/handlebarsConfig');
  
 const app = express();
 
 const PORT = 5000;
 
-//Express config
-app.use(express.static(path.resolve(__dirname, 'public')));
-
-// Handlebars config
-app.engine('hbs', handlebars.engine({
-    extname: 'hbs', 
-    //layoutsDir: ''
-}));
-app.set('view engine', 'hbs');
-app.set('views', 'src/views');
+expressConfig(app);
+handlebarsConfig(app);
+//require('./config/expressConfig')(app); => valid, but old, same as the one above
 
 app.get('/', (req, res) => {
     //res.send('Hello from express!');
