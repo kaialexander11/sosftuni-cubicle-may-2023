@@ -5,6 +5,7 @@ const express = require('express');
 const expressConfig = require('./config/expressConfig');
 const handlebarsConfig = require('./config/handlebarsConfig');
 const homeController = require('./controllers/homeController');
+const cubeController = require('./controllers/cubeController');
  
 const app = express();
 
@@ -15,8 +16,6 @@ handlebarsConfig(app);
 //require('./config/expressConfig')(app); => valid, but old, same as the one above
 
 app.use(homeController);
-
+app.use('/cubes', cubeController);
 //app.get('/', homeController.getHome);
-
-
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));
