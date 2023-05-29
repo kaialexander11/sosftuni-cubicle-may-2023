@@ -11,8 +11,8 @@ router.get('/',  (req, res) => {
     // req.query
 
     const cubes = cubeManager.getAll(search, from, to);
-    
-    res.render('index', { cubes });
+
+    res.render('index', { cubes, search, from, to });
 });
 
 router.get('/about', (req, res) => {
